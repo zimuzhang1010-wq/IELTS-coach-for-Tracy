@@ -1,4 +1,4 @@
-# IELTS-coach
+
 # AI IELTS Speaking Coach
 
 An AI-powered speaking practice tool designed to help students improve fluency, answer structure, and confidence using structured teaching frameworks.
