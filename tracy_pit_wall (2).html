@@ -1,0 +1,2945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0a0e14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>IELTS Pit Wall · Tracy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   F1 PIT WALL — IELTS Speaking Coach for Tracy
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Background layers — deep midnight purple */
+  --bg-deep:     #07051a;
+  --bg-base:     #0d0820;
+  --bg-elev:     #15102e;
+  --bg-card:     #1d1640;
+  --bg-card-hi:  #2a1f5a;
+  --line:        #3a2d6e;
+  --line-bright: #5a448c;
+
+  /* Text */
+  --txt:         #f0e9ff;
+  --txt-dim:     #b0a5cc;
+  --txt-mute:    #6e6294;
+
+  /* Hero color: electric purple */
+  --purple:      #a855f7;
+  --purple-deep: #7c3aed;
+  --purple-bright: #c084fc;
+  --purple-glow: rgba(168, 85, 247, 0.45);
+  --purple-glow-soft: rgba(168, 85, 247, 0.18);
+
+  /* Accents */
+  --magenta:     #ec4899;       /* sister to purple */
+  --magenta-glow: rgba(236, 72, 153, 0.4);
+  --neon-pink:   #ff2bd6;
+  --red:         #f43f5e;       /* F1 racing red, but rose-tinted */
+  --red-glow:    rgba(244, 63, 94, 0.35);
+  --amber:       #fbbf24;       /* purple sector style */
+  --green:       #4ade80;
+  --cyan:        #22d3ee;
+
+  /* Tire compound colors (kept for F1 vibes) */
+  --tire-soft:   #ef4444;
+  --tire-medium: #fbbf24;
+  --tire-hard:   #ffffff;
+
+  /* Typography */
+  --display:     'Bebas Neue', 'Impact', sans-serif;
+  --body:        'Rajdhani', system-ui, sans-serif;
+  --mono:        'JetBrains Mono', 'SF Mono', monospace;
+}
+
+html, body {
+  background: var(--bg-base);
+  color: var(--txt);
+  font-family: var(--body);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg-base);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Aurora gradient mesh — animated purple/magenta glow */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(168, 85, 247, 0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 30%, rgba(236, 72, 153, 0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 0% 60%, rgba(124, 58, 237, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% 110%, rgba(192, 132, 252, 0.2) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: aurora 20s ease-in-out infinite alternate;
+}
+
+@keyframes aurora {
+  0%   { transform: scale(1) rotate(0deg); opacity: 0.9; }
+  50%  { transform: scale(1.1) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1.05) rotate(-2deg); opacity: 0.85; }
+}
+
+/* Carbon-fiber + grain texture */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.015) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(-45deg, rgba(255,255,255,.012) 0 1px, transparent 1px 4px);
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* Diagonal racing stripes accent — top right and bottom left */
+.app::before {
+  content: '';
+  position: fixed;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, transparent 40%, var(--magenta) 41%, var(--magenta) 42%, transparent 43%, transparent 47%, var(--purple) 48%, var(--purple) 49%, transparent 50%);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===================== APP CHROME ===================== */
+
+.app {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 0 0 80px;
+  position: relative;
+}
+
+/* Top status bar — like an F1 broadcast HUD */
+.hud {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: linear-gradient(180deg, rgba(7, 5, 26, 0.85) 0%, rgba(13, 8, 32, 0.7) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 20px 12px;
+  position: relative;
+}
+
+.hud::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--purple) 30%, var(--magenta) 70%, transparent 100%);
+  opacity: 0.7;
+}
+
+.hud-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hud-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hud-flag {
+  width: 26px;
+  height: 26px;
+  background:
+    linear-gradient(45deg, transparent 47%, var(--purple) 47% 53%, transparent 53%),
+    repeating-conic-gradient(#fff 0% 25%, #1a0d2e 0% 50%);
+  background-size: 100% 100%, 9px 9px;
+  border-radius: 4px;
+  box-shadow:
+    0 0 0 1px var(--line-bright),
+    0 0 14px var(--purple-glow);
+  flex-shrink: 0;
+}
+
+.hud-title {
+  font-family: var(--display);
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  color: var(--txt);
+  line-height: 1;
+  text-shadow: 0 0 20px var(--purple-glow-soft);
+}
+
+.hud-title .accent {
+  background: linear-gradient(135deg, var(--purple) 0%, var(--magenta) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px var(--purple-glow));
+}
+
+.hud-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--txt-mute);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.3;
+}
+
+.hud-meta .live {
+  color: var(--neon-pink);
+  font-weight: 700;
+  text-shadow: 0 0 8px var(--magenta-glow);
+}
+
+.hud-meta .live::before {
+  content: '●';
+  display: inline-block;
+  margin-right: 4px;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink { 50% { opacity: 0.3; } }
+
+/* ===================== LOGIN GATE ===================== */
+
+.gate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 32px 24px;
+  text-align: center;
+  position: relative;
+}
+
+/* Vegas-strip glow behind login */
+.gate::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 35%, var(--purple-glow) 0%, transparent 55%),
+    radial-gradient(circle at 50% 65%, var(--magenta-glow) 0%, transparent 50%);
+  pointer-events: none;
+  animation: gatePulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes gatePulse {
+  0%   { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Decorative racing chevrons floating in background */
+.gate::after {
+  content: '◢◤';
+  position: absolute;
+  font-size: 320px;
+  color: var(--purple);
+  opacity: 0.04;
+  letter-spacing: -40px;
+  pointer-events: none;
+  font-family: var(--display);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.gate-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 360px;
+  animation: gateIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+@keyframes gateIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.gate-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--purple-bright);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  animation: gateIn 0.8s 0.1s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+.gate-flag {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 22px;
+  background: repeating-conic-gradient(#fff 0% 25%, #1a0d2e 0% 50%);
+  background-size: 16px 16px;
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 2px var(--purple),
+    0 0 0 4px var(--bg-base),
+    0 0 0 5px var(--magenta),
+    0 8px 40px var(--purple-glow),
+    0 16px 60px var(--magenta-glow);
+  animation: flagFloat 3s ease-in-out infinite alternate, gateIn 0.8s 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+@keyframes flagFloat {
+  from { transform: translateY(0) rotate(-2deg); }
+  to   { transform: translateY(-6px) rotate(2deg); }
+}
+
+.gate-title {
+  font-family: var(--display);
+  font-size: 68px;
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  color: var(--txt);
+  margin-bottom: 10px;
+  text-shadow: 0 0 30px var(--purple-glow);
+  animation: gateIn 0.8s 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+.gate-title .accent {
+  background: linear-gradient(135deg, var(--purple) 0%, var(--magenta) 50%, var(--neon-pink) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 14px var(--purple-glow));
+  display: block;
+}
+
+.gate-sub {
+  font-size: 15px;
+  color: var(--txt-dim);
+  margin-bottom: 38px;
+  letter-spacing: 0.04em;
+  animation: gateIn 0.8s 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+.gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: gateIn 0.8s 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+.field {
+  position: relative;
+}
+
+.field-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--purple-bright);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+  text-align: left;
+}
+
+.field-input {
+  width: 100%;
+  background: rgba(29, 22, 64, 0.6);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--purple);
+  color: var(--txt);
+  font-family: var(--mono);
+  font-size: 15px;
+  padding: 15px 16px;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s;
+  backdrop-filter: blur(10px);
+}
+
+.field-input:focus {
+  border-color: var(--purple-bright);
+  background: var(--bg-card-hi);
+  box-shadow: 0 0 0 3px var(--purple-glow-soft), 0 0 24px var(--purple-glow-soft);
+}
+
+.gate-error {
+  color: var(--neon-pink);
+  font-size: 13px;
+  margin-top: 6px;
+  min-height: 18px;
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+}
+
+.gate-remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--txt-dim);
+  cursor: pointer;
+  user-select: none;
+}
+
+.gate-remember input { accent-color: var(--purple); }
+
+/* ===================== BUTTONS ===================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 22px;
+  background: linear-gradient(135deg, var(--purple) 0%, var(--magenta) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--display);
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px var(--purple-glow-soft), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px var(--purple-glow), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.btn:hover::before { opacity: 1; }
+.btn:active { transform: translateY(0); }
+.btn-block { width: 100%; }
+
+.btn-ghost {
+  background: rgba(29, 22, 64, 0.5);
+  color: var(--txt-dim);
+  border: 1px solid var(--line);
+  box-shadow: none;
+  backdrop-filter: blur(8px);
+}
+.btn-ghost:hover {
+  background: var(--bg-card-hi);
+  color: var(--txt);
+  border-color: var(--purple);
+  box-shadow: 0 0 14px var(--purple-glow-soft);
+  transform: translateY(0);
+}
+
+.btn-amber {
+  background: linear-gradient(135deg, var(--amber) 0%, #f59e0b 100%);
+  color: #1a0d2e;
+  box-shadow: 0 4px 20px rgba(251, 191, 36, 0.25);
+}
+.btn-amber:hover {
+  box-shadow: 0 8px 28px rgba(251, 191, 36, 0.5);
+}
+
+.btn-green {
+  background: linear-gradient(135deg, var(--green) 0%, #10b981 100%);
+  color: #07051a;
+  box-shadow: 0 4px 20px rgba(74, 222, 128, 0.25);
+}
+.btn-green:hover {
+  box-shadow: 0 8px 28px rgba(74, 222, 128, 0.5);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+  filter: grayscale(0.5);
+}
+
+.btn-icon {
+  padding: 10px 14px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+}
+
+/* ===================== TABS / SELECTOR ===================== */
+
+.section {
+  padding: 22px 20px 10px;
+}
+
+.section-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--purple-bright);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: var(--display);
+  font-size: 36px;
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: var(--txt);
+  margin-bottom: 10px;
+  text-shadow: 0 0 30px var(--purple-glow-soft);
+}
+
+.section-sub {
+  color: var(--txt-dim);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+/* Part selector — F1 timing tower style */
+.parts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 12px 20px 0;
+  margin-bottom: 18px;
+}
+
+.part-card {
+  background: rgba(29, 22, 64, 0.5);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 10px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.part-card:hover {
+  border-color: var(--line-bright);
+  background: rgba(45, 31, 90, 0.6);
+  transform: translateY(-2px);
+}
+
+.part-card.active {
+  border-color: var(--purple);
+  background: linear-gradient(180deg, rgba(168, 85, 247, 0.18) 0%, rgba(29, 22, 64, 0.7) 100%);
+  box-shadow: 0 8px 28px var(--purple-glow-soft), inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.part-card.active::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--purple) 0%, var(--magenta) 100%);
+  box-shadow: 0 0 12px var(--purple-glow);
+}
+
+.part-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--txt-mute);
+  letter-spacing: 0.18em;
+}
+
+.part-card.active .part-num { color: var(--purple-bright); }
+
+.part-name {
+  font-family: var(--display);
+  font-size: 19px;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+  color: var(--txt);
+}
+
+.part-card.active .part-name {
+  background: linear-gradient(135deg, var(--purple-bright) 0%, var(--magenta) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.part-meta {
+  font-size: 11px;
+  color: var(--txt-mute);
+  margin-top: 3px;
+  font-family: var(--mono);
+}
+
+/* ===================== TOPIC LIST ===================== */
+
+.topics {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topic-card {
+  background: rgba(29, 22, 64, 0.55);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 15px 16px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.topic-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--purple) 0%, var(--magenta) 100%);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.25s ease;
+}
+
+.topic-card:hover {
+  background: rgba(45, 31, 90, 0.75);
+  border-color: var(--line-bright);
+  transform: translateX(2px);
+  box-shadow: 0 4px 20px var(--purple-glow-soft);
+}
+
+.topic-card:hover::before { transform: scaleY(1); }
+
+.topic-card:active { transform: scale(0.99) translateX(2px); }
+
+.topic-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.topic-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--txt);
+  margin-bottom: 3px;
+}
+
+.topic-zh {
+  font-size: 12px;
+  color: var(--txt-mute);
+}
+
+.topic-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.topic-stat {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--txt-mute);
+}
+
+.topic-stat .star { color: var(--amber); }
+.topic-stat .check { color: var(--green); }
+
+/* ===================== PRACTICE VIEW ===================== */
+
+.practice {
+  padding: 18px;
+}
+
+.practice-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--txt-dim);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-bottom: 14px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.practice-back:hover { color: var(--txt); }
+
+.q-card {
+  background: linear-gradient(180deg, rgba(45, 31, 90, 0.7) 0%, rgba(29, 22, 64, 0.75) 100%);
+  border: 1px solid var(--line-bright);
+  border-radius: 12px;
+  padding: 22px 20px;
+  position: relative;
+  margin-bottom: 18px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(7, 5, 26, 0.4);
+}
+
+.q-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 20px; right: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple) 0%, var(--magenta) 50%, transparent 90%);
+  box-shadow: 0 0 12px var(--purple-glow);
+}
+
+.q-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--purple-bright);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.q-text {
+  font-size: 19px;
+  line-height: 1.4;
+  color: var(--txt);
+  font-weight: 500;
+}
+
+/* Cue card for Part 2 */
+.cue-bullets {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.cue-bullets-label {
+  font-size: 12px;
+  color: var(--txt-mute);
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.cue-bullets ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cue-bullets li {
+  padding: 5px 0 5px 20px;
+  font-size: 14px;
+  color: var(--txt-dim);
+  position: relative;
+}
+
+.cue-bullets li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--purple);
+  filter: drop-shadow(0 0 4px var(--purple-glow-soft));
+}
+
+/* ===================== TIMER ===================== */
+
+.timer-block {
+  background: linear-gradient(180deg, rgba(21, 16, 46, 0.8) 0%, rgba(13, 8, 32, 0.9) 100%);
+  border: 1px solid var(--line-bright);
+  border-radius: 12px;
+  padding: 22px 18px;
+  margin-bottom: 18px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.timer-block::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, var(--purple-glow-soft) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.timer-stage {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--purple-bright);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.timer-display {
+  font-family: var(--display);
+  font-size: 72px;
+  line-height: 1;
+  color: var(--txt);
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+  font-feature-settings: "tnum";
+  text-shadow: 0 0 30px var(--purple-glow);
+  position: relative;
+}
+
+.timer-display.warn {
+  color: var(--amber);
+  text-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+}
+.timer-display.danger {
+  color: var(--neon-pink);
+  text-shadow: 0 0 30px var(--magenta-glow);
+  animation: pulse 0.8s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: 0.5; }
+}
+
+.timer-progress {
+  height: 5px;
+  background: rgba(7, 5, 26, 0.6);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.timer-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--purple) 0%, var(--magenta) 100%);
+  width: 0%;
+  transition: width 0.3s linear;
+  box-shadow: 0 0 12px var(--purple-glow);
+}
+
+.timer-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  position: relative;
+}
+
+.timer-controls .btn {
+  flex: 1;
+  max-width: 130px;
+  padding: 12px 14px;
+  font-size: 13px;
+}
+
+/* ===================== RECORDING ===================== */
+
+.record-block {
+  background: rgba(29, 22, 64, 0.55);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 18px;
+  margin-bottom: 18px;
+  backdrop-filter: blur(10px);
+}
+
+.record-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.record-title {
+  font-family: var(--display);
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: var(--txt);
+}
+
+.record-status {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--txt-mute);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.record-status.live {
+  color: var(--neon-pink);
+  text-shadow: 0 0 8px var(--magenta-glow);
+}
+
+.record-status.live::before {
+  content: '●';
+  margin-right: 4px;
+  animation: blink 0.8s infinite;
+}
+
+.transcript {
+  background: rgba(7, 5, 26, 0.7);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-height: 120px;
+  max-height: 240px;
+  overflow-y: auto;
+  padding: 14px 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--txt);
+  margin-bottom: 12px;
+  font-family: 'Georgia', serif;
+}
+
+.transcript:empty::before {
+  content: 'Tap "Start" and begin speaking. Your words will appear here.';
+  color: var(--txt-mute);
+  font-style: italic;
+  font-family: var(--body);
+  font-size: 14px;
+}
+
+.transcript.editing {
+  outline: 2px solid var(--purple);
+  box-shadow: 0 0 0 4px var(--purple-glow-soft);
+}
+
+.record-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.record-controls .btn {
+  flex: 1 1 100px;
+  padding: 12px 14px;
+  font-size: 13px;
+}
+
+/* ===================== FEEDBACK ===================== */
+
+.feedback {
+  background: linear-gradient(180deg, rgba(45, 31, 90, 0.7) 0%, rgba(21, 16, 46, 0.85) 100%);
+  border: 1px solid var(--line-bright);
+  border-radius: 14px;
+  padding: 20px 18px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 40px rgba(7, 5, 26, 0.5);
+  animation: fbIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes fbIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.feedback::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--purple) 0%, var(--magenta) 50%, var(--neon-pink) 100%);
+  box-shadow: 0 0 14px var(--purple-glow);
+}
+
+.feedback-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.feedback-title {
+  font-family: var(--display);
+  font-size: 24px;
+  letter-spacing: 0.08em;
+  color: var(--txt);
+  background: linear-gradient(135deg, var(--purple-bright) 0%, var(--magenta) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.band-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(7, 5, 26, 0.7);
+  border: 2px solid var(--purple);
+  border-radius: 10px;
+  padding: 5px 16px;
+  min-width: 78px;
+  box-shadow: 0 0 20px var(--purple-glow-soft);
+}
+
+.band-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--txt-mute);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.band-value {
+  font-family: var(--display);
+  font-size: 30px;
+  color: var(--purple-bright);
+  line-height: 1;
+  text-shadow: 0 0 14px var(--purple-glow);
+}
+
+.fb-section {
+  margin-bottom: 16px;
+}
+
+.fb-section:last-child { margin-bottom: 0; }
+
+.fb-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--purple-bright);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fb-label .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, var(--purple) 0%, var(--magenta) 100%);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
+  box-shadow: 0 0 8px var(--purple-glow-soft);
+}
+
+.fb-content {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--txt);
+}
+
+.fb-content p { margin-bottom: 6px; }
+.fb-content p:last-child { margin-bottom: 0; }
+
+.fb-content em {
+  color: var(--amber);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.fb-content strong {
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.fb-quote {
+  border-left: 3px solid var(--purple);
+  padding-left: 14px;
+  margin: 10px 0;
+  color: var(--txt-dim);
+  font-style: italic;
+  font-size: 14px;
+  background: rgba(168, 85, 247, 0.06);
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+}
+
+.crisp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.crisp-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(7, 5, 26, 0.7);
+  border: 1px solid var(--line-bright);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--txt-dim);
+  transition: all 0.2s;
+}
+
+.crisp-tag.used {
+  background: rgba(74, 222, 128, 0.12);
+  border-color: var(--green);
+  color: var(--green);
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.2);
+}
+
+.crisp-tag.missing {
+  opacity: 0.45;
+}
+
+/* Score grid for criteria */
+.score-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.score-item {
+  background: rgba(7, 5, 26, 0.6);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.score-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--purple);
+}
+
+.score-name {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--txt-mute);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.score-val {
+  font-family: var(--display);
+  font-size: 26px;
+  color: var(--txt);
+  line-height: 1;
+  margin-top: 3px;
+}
+
+.score-val.s5 { color: #ff6b8a; }
+.score-val.s6 { color: var(--amber); }
+.score-val.s7 { color: var(--green); }
+
+/* Loading state */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 36px 20px;
+  text-align: center;
+}
+
+.lights {
+  display: flex;
+  gap: 7px;
+}
+
+.light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(7, 5, 26, 0.6);
+  border: 1px solid var(--line-bright);
+  transition: all 0.2s;
+}
+
+.light.on {
+  background: var(--purple);
+  border-color: var(--purple);
+  box-shadow: 0 0 16px var(--purple-glow), 0 0 28px var(--purple-glow-soft);
+}
+
+.loading-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--purple-bright);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ===================== SETTINGS / API KEY ===================== */
+
+.settings-btn {
+  background: none;
+  border: none;
+  color: var(--txt-mute);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.modal-card {
+  background: linear-gradient(180deg, var(--bg-elev) 0%, var(--bg-card) 100%);
+  border: 1px solid var(--line-bright);
+  border-top: 3px solid var(--purple);
+  border-radius: 16px 16px 0 0;
+  width: 100%;
+  max-width: 480px;
+  padding: 26px 22px 32px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 -10px 40px var(--purple-glow-soft);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.modal-title {
+  font-family: var(--display);
+  font-size: 26px;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  color: var(--txt);
+}
+
+.modal-sub {
+  color: var(--txt-dim);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.modal-row {
+  margin-bottom: 16px;
+}
+
+.modal-help {
+  font-size: 12px;
+  color: var(--txt-mute);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.modal-help a {
+  color: var(--purple-bright);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--purple);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.modal-actions .btn { flex: 1; }
+
+/* ===================== PROGRESS DASHBOARD ===================== */
+
+.progress-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 14px 20px 0;
+  margin-bottom: 12px;
+}
+
+.progress-cell {
+  background: rgba(29, 22, 64, 0.55);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 8px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.progress-cell::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple) 0%, var(--magenta) 100%);
+  opacity: 0.6;
+}
+
+.progress-num {
+  font-family: var(--display);
+  font-size: 30px;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--purple-bright) 0%, var(--magenta) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px var(--purple-glow-soft));
+}
+
+.progress-lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--txt-mute);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* Track-style progress bar */
+.track-progress {
+  margin: 0 20px 18px;
+  background: rgba(29, 22, 64, 0.55);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  backdrop-filter: blur(10px);
+}
+
+.track-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--txt-mute);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.track-header .pct {
+  color: var(--purple-bright);
+  font-weight: 700;
+  text-shadow: 0 0 8px var(--purple-glow);
+  font-size: 12px;
+}
+
+.track-line {
+  height: 7px;
+  background: rgba(7, 5, 26, 0.8);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.track-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--purple) 0%, var(--magenta) 50%, var(--neon-pink) 100%);
+  border-radius: 4px;
+  transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 0 12px var(--purple-glow);
+}
+
+/* ===================== UTILS ===================== */
+
+.hidden { display: none !important; }
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hi) 100%);
+  border: 1px solid var(--purple);
+  color: var(--txt);
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  z-index: 200;
+  animation: toastIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 6px 28px var(--purple-glow), 0 0 0 1px var(--purple-glow-soft);
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* Selection */
+::selection { background: var(--purple); color: #fff; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--line-bright);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--purple); }
+
+/* Tablet+ */
+@media (min-width: 600px) {
+  .app { max-width: 520px; }
+}
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+  <!-- Login gate inserted by JS -->
+</div>
+
+<script>
+/* ============================================================
+   QUESTION BANK — All 18 Part 1 topics, Part 2 cue cards, Part 3
+   Sourced from 2026年1-4月雅思口语保留题
+   ============================================================ */
+
+const QUESTIONS = {
+  part1: [
+    { id: 'p1_art', name: 'Art', zh: '艺术', questions: [
+      "Do you like art?",
+      "Do you like visiting art galleries?",
+      "Do you want to be an artist?",
+      "Do you like modern art or traditional art?",
+    ]},
+    { id: 'p1_shoes', name: 'Shoes', zh: '鞋子', questions: [
+      "Do you like buying shoes?",
+      "Have you ever bought shoes online?",
+      "How much money do you usually spend on shoes?",
+      "Which do you prefer, fashionable shoes or comfortable shoes?",
+    ]},
+    { id: 'p1_plants', name: 'Plants', zh: '植物', questions: [
+      "Do you keep plants at home?",
+      "What plant did you grow when you were young?",
+      "Do you know anything about growing a plant?",
+      "Do Chinese people send plants as a gift to other people?",
+    ]},
+    { id: 'p1_oldppl', name: 'Working with old people', zh: '跟老人共事', questions: [
+      "Have you ever worked with old people?",
+      "Are you happy to work with people who are older than you?",
+      "What are the advantages of working with old people?",
+      "Have you learned anything from older colleagues?",
+    ]},
+    { id: 'p1_well', name: 'Doing something well', zh: '把事情做好', questions: [
+      "Do you have an experience that you did something well?",
+      "Do you have an experience that your teacher thought you did a good job?",
+      "Do you often tell your friends when they do something well?",
+      "Why is it important to praise people when they do well?",
+    ]},
+    { id: 'p1_rules', name: 'Rules', zh: '规则', questions: [
+      "Are there any rules for students at your school?",
+      "Do you think students would benefit more from rules?",
+      "Do you have a teacher who does his/her job very well?",
+      "Should children obey rules even when they don't agree with them?",
+    ]},
+    { id: 'p1_public', name: 'Public places', zh: '公共场所', questions: [
+      "Have you ever talked with someone you don't know in public places?",
+      "Do you wear headphones in public places?",
+      "Do you think people behave differently in public places?",
+      "Why are some places suitable for meeting while others are not?",
+    ]},
+    { id: 'p1_carry', name: 'Carrying things', zh: '物品携带', questions: [
+      "What do you often carry with you?",
+      "What do you do if your item is heavy?",
+      "Do you usually carry a bag when you go out?",
+      "Did you carry different things when you were younger?",
+    ]},
+    { id: 'p1_goingout', name: 'Going out', zh: '外出', questions: [
+      "Do you bring food or snacks with you when going out?",
+      "Do you always take your mobile phone with you when going out?",
+      "Do you prefer going out alone or with friends?",
+      "How often do you go out in the evening?",
+    ]},
+    { id: 'p1_borrow', name: 'Borrowing & lending', zh: '借东西', questions: [
+      "How do you feel when people don't return things they borrowed from you?",
+      "Have you ever borrowed money from others?",
+      "Do you often borrow things from your friends?",
+      "Is it a good idea to lend money to friends?",
+    ]},
+    { id: 'p1_museum', name: 'Museum', zh: '博物馆', questions: [
+      "Do you think museums are important?",
+      "How often do you visit a museum?",
+      "Do you think museums should be free?",
+      "What kind of museums do you like best?",
+    ]},
+    { id: 'p1_ad', name: 'Advertisement', zh: '广告', questions: [
+      "Do you like watching advertisements?",
+      "Do you remember any advertisements from your childhood?",
+      "What kind of advertisements are most effective?",
+      "Do you think advertisements influence people's choices?",
+    ]},
+    { id: 'p1_crowd', name: 'Crowded places', zh: '拥挤之地', questions: [
+      "Do you like crowded places?",
+      "Is the city where you live crowded?",
+      "Is there a crowded place near where you live?",
+      "When was the last time you were in a crowded place?",
+    ]},
+    { id: 'p1_chat', name: 'Chatting', zh: '聊天', questions: [
+      "Do you like chatting with friends?",
+      "What do you usually chat about with friends?",
+      "Do you prefer to chat with a group of people or with only one friend?",
+      "Do you argue with friends?",
+    ]},
+    { id: 'p1_break', name: 'Having a break', zh: '休息', questions: [
+      "What do you usually do during a break?",
+      "Do you think it's important to have breaks during work or study?",
+      "How long should a break be?",
+      "What did you do during breaks when you were a child?",
+    ]},
+    { id: 'p1_share', name: 'Sharing', zh: '分享', questions: [
+      "Do you like to share things with others?",
+      "What kinds of things do you like to share?",
+      "Did your parents teach you to share when you were a child?",
+      "Do you think people share more or less than they did in the past?",
+    ]},
+    { id: 'p1_grow', name: 'Growing vegetables / fruits', zh: '种植物', questions: [
+      "Have you ever grown vegetables or fruits?",
+      "Do you think it's easy to grow vegetables?",
+      "Should schools teach students how to grow vegetables?",
+      "Do you think it's becoming more common to grow your own food?",
+    ]},
+    { id: 'p1_friends', name: 'Friends', zh: '朋友', questions: [
+      "Do you have a friend you have known for a long time?",
+      "What do you usually do with your friends?",
+      "Where do you often meet your friends?",
+      "Is it easy for you to make new friends?",
+    ]},
+  ],
+
+  part2: [
+    // PEOPLE
+    { id: 'p2_family_biz', name: 'Family business owner', zh: '经营家族企业的人', cat: 'People',
+      prompt: 'Describe a person you know who runs a family business.',
+      bullets: ['who he/she is', 'what the business is', 'what product it sells', 'and explain what you have learned from him/her.'],
+      part3id: 'p3_family_biz' },
+    { id: 'p2_good_friend', name: 'Important close friend', zh: '重要的好朋友', cat: 'People',
+      prompt: 'Describe a good friend who is important to you.',
+      bullets: ['who this person is', 'how you met him/her', 'what you usually do together', 'and explain why this friend is important to you.'],
+      part3id: 'p3_good_friend' },
+    { id: 'p2_music_friend', name: 'Friend good at music', zh: '擅长音乐的朋友', cat: 'People',
+      prompt: 'Describe a friend of yours who is good at music / singing.',
+      bullets: ['who he/she is', 'when you listen to his/her music/singing', 'what kind of music/songs he/she is good at', 'and explain how you feel when listening to his/her music/singing.'],
+      part3id: 'p3_music_friend' },
+    { id: 'p2_creative', name: 'Creative person', zh: '钦佩的有创造力者', cat: 'People',
+      prompt: 'Describe a creative person (e.g. an artist, a musician, etc.) you admire.',
+      bullets: ['who he/she is', 'how you knew him/her', 'what his/her greatest achievement is', 'and explain why you think he/she is creative.'],
+      part3id: 'p3_creative' },
+    { id: 'p2_athlete', name: 'Successful sportsperson', zh: '敬佩的成功运动员', cat: 'People',
+      prompt: 'Describe a successful sportsperson you admire.',
+      bullets: ['who this person is', 'what this person has achieved', 'how you know about this person', 'and explain why you like this person.'],
+      part3id: 'p3_athlete' },
+
+    // PLACE
+    { id: 'p2_trees', name: 'Place with lots of trees', zh: '想去的树多之地', cat: 'Place',
+      prompt: 'Describe a place with a lot of trees that you would like to visit.',
+      bullets: ['where it is', 'how you knew this place', 'what it is like', 'and explain why you would like to visit it.'],
+      part3id: 'p3_trees' },
+
+    // OBJECT / ACTIVITY
+    { id: 'p2_exciting', name: 'Exciting first-time activity', zh: '初尝刺激活动', cat: 'Object',
+      prompt: 'Describe an exciting activity you tried for the first time.',
+      bullets: ['what you did', 'when and where you did it', 'who you did it with whether it was difficult or easy', 'and explain why this activity was new or exciting for you.'],
+      part3id: 'p3_exciting' },
+    { id: 'p2_science', name: 'Area of science', zh: '感兴趣的科学', cat: 'Object',
+      prompt: 'Describe an area of science that interests you.',
+      bullets: ['what science it is', 'how you got interested in it', 'how you learn this science', 'and explain why this science is interesting to you.'],
+      part3id: 'p3_science' },
+    { id: 'p2_story', name: 'Traditional story', zh: '传统故事', cat: 'Object',
+      prompt: 'Describe a traditional story from your country.',
+      bullets: ['what the story is', 'who told you this story', 'when you first heard it', 'and explain why this story is meaningful to you.'],
+      part3id: 'p3_story' },
+    { id: 'p2_dinner', name: 'Wonderful dinner with friends/family', zh: '和亲友的美妙晚餐', cat: 'Object',
+      prompt: 'Describe a wonderful dinner you had with friends or family.',
+      bullets: ['when it happened', 'where you had it', 'what you ate', 'and explain why it was wonderful.'],
+      part3id: 'p3_dinner' },
+    { id: 'p2_animal', name: 'Wild animal you want to know', zh: '想多了解的野生动物', cat: 'Object',
+      prompt: 'Describe a wild animal you want to know more about.',
+      bullets: ['what it is', 'when you saw or heard about it', 'where it lives', 'and explain why you want to learn more about it.'],
+      part3id: 'p3_animal' },
+    { id: 'p2_skill', name: 'Skill you want to improve', zh: '想要提升的天赋', cat: 'Object',
+      prompt: 'Describe a skill or talent you would like to improve.',
+      bullets: ['what it is', 'when you started learning it', 'how you would improve it', 'and explain why you want to improve this skill.'],
+      part3id: 'p3_skill' },
+    { id: 'p2_habit', name: 'Good habit', zh: '好习惯', cat: 'Object',
+      prompt: 'Describe a good habit you have.',
+      bullets: ['what it is', 'when you developed this habit', 'how it affects your life', 'and explain why you think it is a good habit.'],
+      part3id: 'p3_habit' },
+    { id: 'p2_toy', name: 'Childhood toy', zh: '儿时玩具', cat: 'Object',
+      prompt: 'Describe a toy that you liked when you were a child.',
+      bullets: ['what the toy was', 'who gave it to you', 'how you used this toy', 'and explain how you felt when you got this toy.'],
+      part3id: 'p3_toy' },
+
+    // EVENT
+    { id: 'p2_truth', name: 'Telling a friend the truth', zh: '告诉朋友实情', cat: 'Event',
+      prompt: 'Describe a time when you told your friend an important truth.',
+      bullets: ['who your friend is', 'what the truth was', "what your friend's reaction was", 'and explain why you think it was important to tell your friend the truth.'],
+      part3id: 'p3_truth' },
+    { id: 'p2_lost', name: 'Getting lost', zh: '迷路', cat: 'Event',
+      prompt: 'Describe a time when you got lost somewhere.',
+      bullets: ['where you were', 'when it happened', 'how you found your way', 'and explain how you felt about it.'],
+      part3id: 'p3_lost' },
+    { id: 'p2_apology', name: 'Someone apologized to you', zh: '别人向你道歉', cat: 'Event',
+      prompt: 'Describe a time when someone apologized to you.',
+      bullets: ['who apologized', 'what happened', 'how the person apologized', 'and explain how you felt about it.'],
+      part3id: 'p3_apology' },
+    { id: 'p2_revisit', name: 'Trip you want to revisit', zh: '想要再去的旅行', cat: 'Event',
+      prompt: 'Describe a trip you would like to take again.',
+      bullets: ['where you went', 'when you went', 'what you did there', 'and explain why you want to take this trip again.'],
+      part3id: 'p3_revisit' },
+    { id: 'p2_lang', name: 'First time using a foreign language', zh: '第一次使用外语', cat: 'Event',
+      prompt: 'Describe the first time when you used a foreign language to communicate.',
+      bullets: ['where it happened', 'when it happened', 'who you talked to', 'and explain how you felt about the conversation.'],
+      part3id: 'p3_lang' },
+    { id: 'p2_social', name: 'Funny social media event', zh: '社媒趣事', cat: 'Event',
+      prompt: 'Describe a funny thing that happened on social media.',
+      bullets: ['what it was', 'when you saw it', 'who shared it', 'and explain why it was funny.'],
+      part3id: 'p3_social' },
+    { id: 'p2_break_thing', name: 'Breaking something', zh: '弄坏东西', cat: 'Event',
+      prompt: 'Describe a time when you accidentally broke something.',
+      bullets: ['what it was', 'when it happened', 'how you broke it', 'and explain how you felt about it.'],
+      part3id: 'p3_break_thing' },
+    { id: 'p2_power', name: 'Sudden power cut', zh: '突然停电', cat: 'Event',
+      prompt: 'Describe a time when there was a sudden power cut.',
+      bullets: ['when it happened', 'where you were', 'what you did', 'and explain how you felt about it.'],
+      part3id: 'p3_power' },
+    { id: 'p2_speech', name: 'Speech experience', zh: '演讲经历', cat: 'Event',
+      prompt: 'Describe a time when you gave a speech or presentation.',
+      bullets: ['what it was about', 'where you gave it', 'who was in the audience', 'and explain how you felt about it.'],
+      part3id: 'p3_speech' },
+    { id: 'p2_wait', name: 'Waiting for something special', zh: '等待特别的事儿', cat: 'Event',
+      prompt: 'Describe a time when you waited for something special to happen.',
+      bullets: ['what it was', 'how long you waited', 'what you did during the wait', 'and explain how you felt when it happened.'],
+      part3id: 'p3_wait' },
+    { id: 'p2_decision', name: 'Decision someone helped you make', zh: '别人帮助做的决定', cat: 'Event',
+      prompt: 'Describe a decision that someone helped you make.',
+      bullets: ['what the decision was', 'who helped you', 'how the person helped you', 'and explain how you felt about the decision.'],
+      part3id: 'p3_decision' },
+  ],
+
+  part3: {
+    p3_family_biz: [
+      "What are the advantages and disadvantages of family businesses?",
+      "Is it good to work with family members?",
+      "What kinds of family businesses are common in your country?",
+      "Do you think family businesses will continue to be successful in the future?",
+    ],
+    p3_good_friend: [
+      "What qualities make a good friend?",
+      "Is it important to have many friends or just a few close ones?",
+      "Do you think friendships change as people get older?",
+      "How has technology changed the way friends keep in touch?",
+    ],
+    p3_music_friend: [
+      "What kind of music is popular in your country?",
+      "Do you think music is beneficial to children?",
+      "What are the benefits of children learning a musical instrument?",
+      "Do you think live music is more enjoyable than recorded music?",
+    ],
+    p3_creative: [
+      "Do you think children should learn to play musical instruments?",
+      "How do artists acquire inspiration?",
+      "Do you think pictures and videos in news reports are important?",
+      "What can we do to help children keep creative?",
+    ],
+    p3_athlete: [
+      "Should students have physical education and do sports at school?",
+      "What qualities should an athlete have?",
+      "Is talent important in sports?",
+      "Do you think professional athletes are paid too much?",
+    ],
+    p3_trees: [
+      "Why do people like visiting places with trees or forests?",
+      "What would happen if no preparation were made before a trip?",
+      "Why do some people prefer to travel in their own country rather than going abroad?",
+      "Do you think it's important to protect forests?",
+    ],
+    p3_exciting: [
+      "Why do people enjoy trying exciting or adventurous activities?",
+      "What should people consider before trying a new adventurous activity?",
+      "How do such activities benefit people personally?",
+      "Are young people more willing to try exciting activities than older people?",
+    ],
+    p3_science: [
+      "Should children learn science at school?",
+      "How has science changed people's lives?",
+      "Do you think science will solve all our problems in the future?",
+      "Why do some students lose interest in science?",
+    ],
+    p3_story: [
+      "Why do people like traditional stories?",
+      "Do you think children should read traditional stories or modern ones?",
+      "What can we learn from traditional stories?",
+      "Are traditional stories disappearing in modern society?",
+    ],
+    p3_dinner: [
+      "Do you think family meals are important?",
+      "Why do people enjoy eating out?",
+      "How have eating habits changed in recent years?",
+      "Is fast food popular in your country?",
+    ],
+    p3_animal: [
+      "Why are some animals endangered?",
+      "Should governments do more to protect wild animals?",
+      "Do you think zoos are useful?",
+      "How can ordinary people help protect wildlife?",
+    ],
+    p3_skill: [
+      "What skills are most important for young people to learn today?",
+      "Is it better to learn a skill alone or with a teacher?",
+      "Do you think people learn faster when they are young?",
+      "Should companies provide skill training for their employees?",
+    ],
+    p3_habit: [
+      "What habits are good for children to develop?",
+      "Why is it difficult to change a bad habit?",
+      "Do parents have a strong influence on children's habits?",
+      "Why do some habits change when people get older, and how do people change their habits?",
+    ],
+    p3_toy: [
+      "How do adverts influence children?",
+      "Should advertising aimed at kids be prohibited?",
+      "What's the difference between the toys kids play now and those they played in the past?",
+      "Do you think modern toys are better than traditional ones?",
+    ],
+    p3_truth: [
+      "Is honesty always the best policy?",
+      "Why do people sometimes hide the truth?",
+      "Should children always tell their parents the truth?",
+      "Do you think honesty is important in friendship?",
+    ],
+    p3_lost: [
+      "Why do people get lost in unfamiliar places?",
+      "Do you think technology has made it harder for people to navigate without help?",
+      "Is it useful to learn how to read maps?",
+      "What should you do if you get lost in a new city?",
+    ],
+    p3_apology: [
+      "Is it easy to apologize to others?",
+      "Why is it important to say sorry?",
+      "Do you think apologies should always be accepted?",
+      "Are apologies more common in some cultures than others?",
+    ],
+    p3_revisit: [
+      "Why do people like travelling?",
+      "What would happen if no preparation were made before a trip?",
+      "Why do some people prefer to travel in their own country rather than going abroad?",
+      "Do you think travel is becoming more or less expensive?",
+    ],
+    p3_lang: [
+      "At what age should children start learning a foreign language?",
+      "Does a person still need to learn other languages, if he or she is good at English?",
+      "What is the best way to learn a foreign language?",
+      "Do you think technology makes language learning easier?",
+    ],
+    p3_social: [
+      "How has social media changed communication?",
+      "Do you think social media has more advantages or disadvantages?",
+      "Should there be more rules about what people post online?",
+      "Do you think people share too much personal information on social media?",
+    ],
+    p3_break_thing: [
+      "How do you feel when you break something that belongs to someone else?",
+      "Should children pay for things they break?",
+      "Are people today more careful with their belongings than in the past?",
+      "What kinds of things are easily broken?",
+    ],
+    p3_power: [
+      "What problems can a power cut cause?",
+      "How can people prepare for a power cut?",
+      "Do you think modern life depends too much on electricity?",
+      "What should governments do to ensure stable electricity supply?",
+    ],
+    p3_speech: [
+      "Why do many people feel nervous when giving a speech?",
+      "What makes a good speech?",
+      "Should public speaking be taught in schools?",
+      "Are speeches more or less important now than in the past?",
+    ],
+    p3_wait: [
+      "Do you think people are losing patience these days?",
+      "What kinds of things are worth waiting for?",
+      "How do people usually pass the time while waiting?",
+      "Why do some people get anxious when they have to wait?",
+    ],
+    p3_decision: [
+      "Is it better to make decisions alone or with help from others?",
+      "Who do young people usually ask for advice when making important decisions?",
+      "Why do some people regret their decisions?",
+      "Do you think people make better decisions as they get older?",
+    ],
+  },
+};
+
+/* ============================================================
+   STATE & STORAGE
+   ============================================================ */
+
+const PASSWORD = 'Zimu10tracy';
+const STORAGE_KEYS = {
+  auth: 'tracy_auth',
+  apiKey: 'tracy_deepseek_key',
+  progress: 'tracy_progress',
+};
+
+const state = {
+  authed: false,
+  currentPart: null,    // 'part1' | 'part2'
+  currentTopic: null,   // topic object
+  currentQIdx: 0,       // index in topic.questions or 0 for part2
+  currentMode: null,    // 'part1' | 'part2' | 'part3'
+  recognition: null,
+  recording: false,
+  transcript: '',
+  finalTranscript: '',
+  timer: null,
+  timerEnd: null,
+  timerStage: null,     // 'prep' | 'speak' | null
+  feedbackPending: false,
+};
+
+const progress = loadProgress();
+
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.progress);
+    return raw ? JSON.parse(raw) : { attempts: {}, mastered: {} };
+  } catch { return { attempts: {}, mastered: {} }; }
+}
+
+function saveProgress() {
+  localStorage.setItem(STORAGE_KEYS.progress, JSON.stringify(progress));
+}
+
+function markAttempt(qKey) {
+  progress.attempts[qKey] = (progress.attempts[qKey] || 0) + 1;
+  saveProgress();
+}
+
+function markMastered(qKey, band) {
+  if (band >= 6) progress.mastered[qKey] = Math.max(progress.mastered[qKey] || 0, band);
+  saveProgress();
+}
+
+function topicStats(topicId, isPart1) {
+  // For part1, topicId is e.g. 'p1_art'
+  // count attempts/mastered across its questions
+  let attempts = 0, mastered = 0, total = 0;
+  if (isPart1) {
+    const topic = QUESTIONS.part1.find(t => t.id === topicId);
+    if (!topic) return { attempts: 0, mastered: 0, total: 0 };
+    total = topic.questions.length;
+    topic.questions.forEach((_, i) => {
+      const k = `${topicId}_q${i}`;
+      if (progress.attempts[k]) attempts++;
+      if (progress.mastered[k]) mastered++;
+    });
+  } else {
+    // part2 topic: counts the cue card itself + its part3 questions
+    const topic = QUESTIONS.part2.find(t => t.id === topicId);
+    if (!topic) return { attempts: 0, mastered: 0, total: 0 };
+    const p3 = QUESTIONS.part3[topic.part3id] || [];
+    total = 1 + p3.length;
+    if (progress.attempts[topicId]) attempts++;
+    if (progress.mastered[topicId]) mastered++;
+    p3.forEach((_, i) => {
+      const k = `${topic.part3id}_q${i}`;
+      if (progress.attempts[k]) attempts++;
+      if (progress.mastered[k]) mastered++;
+    });
+  }
+  return { attempts, mastered, total };
+}
+
+function overallStats() {
+  let totalQ = 0, attempted = 0, mastered = 0;
+  QUESTIONS.part1.forEach(t => {
+    totalQ += t.questions.length;
+    t.questions.forEach((_, i) => {
+      const k = `${t.id}_q${i}`;
+      if (progress.attempts[k]) attempted++;
+      if (progress.mastered[k]) mastered++;
+    });
+  });
+  QUESTIONS.part2.forEach(t => {
+    totalQ += 1;
+    if (progress.attempts[t.id]) attempted++;
+    if (progress.mastered[t.id]) mastered++;
+    const p3 = QUESTIONS.part3[t.part3id] || [];
+    totalQ += p3.length;
+    p3.forEach((_, i) => {
+      const k = `${t.part3id}_q${i}`;
+      if (progress.attempts[k]) attempted++;
+      if (progress.mastered[k]) mastered++;
+    });
+  });
+  return { totalQ, attempted, mastered };
+}
+
+/* ============================================================
+   AUTH
+   ============================================================ */
+
+function isAuthValid() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.auth);
+    if (!raw) return false;
+    const { ts, expires } = JSON.parse(raw);
+    if (!expires || Date.now() < expires) return true;
+    return false;
+  } catch { return false; }
+}
+
+function setAuth(remember) {
+  const expires = Date.now() + (remember ? 30 : 1) * 24 * 60 * 60 * 1000;
+  localStorage.setItem(STORAGE_KEYS.auth, JSON.stringify({ ts: Date.now(), expires }));
+  state.authed = true;
+}
+
+/* ============================================================
+   RENDER — LOGIN GATE
+   ============================================================ */
+
+function renderGate() {
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="gate">
+      <div class="gate-content">
+        <div class="gate-tag">Pit Wall · Driver Login</div>
+        <div class="gate-flag"></div>
+        <div class="gate-title">IELTS<span class="accent">Pit Wall</span></div>
+        <div class="gate-sub">Speaking practice · Vegas night mode</div>
+        <div class="gate-form">
+          <div class="field">
+            <label class="field-label">Access Code</label>
+            <input type="password" id="pwd" class="field-input" autofocus
+                   autocomplete="current-password" placeholder="Enter password">
+          </div>
+          <label class="gate-remember">
+            <input type="checkbox" id="remember" checked>
+            Stay logged in for 30 days
+          </label>
+          <div class="gate-error" id="gateErr"></div>
+          <button class="btn btn-block" id="loginBtn">START ENGINE ↗</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const go = () => {
+    const pwd = document.getElementById('pwd').value;
+    const remember = document.getElementById('remember').checked;
+    if (pwd === PASSWORD) {
+      setAuth(remember);
+      renderHome();
+    } else {
+      document.getElementById('gateErr').textContent = '✗ Wrong password — try again';
+      document.getElementById('pwd').value = '';
+    }
+  };
+  document.getElementById('loginBtn').addEventListener('click', go);
+  document.getElementById('pwd').addEventListener('keydown', e => {
+    if (e.key === 'Enter') go();
+  });
+}
+
+/* ============================================================
+   RENDER — HOME
+   ============================================================ */
+
+function renderHome() {
+  state.currentPart = state.currentPart || 'part1';
+  const stats = overallStats();
+  const pct = stats.totalQ > 0 ? Math.round(stats.attempted / stats.totalQ * 100) : 0;
+
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="hud">
+      <div class="hud-row">
+        <div class="hud-brand">
+          <div class="hud-flag"></div>
+          <div>
+            <div class="hud-title">PIT<span class="accent">WALL</span></div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="hud-meta"><span class="live">LIVE</span><br>Tracy · Driver</div>
+          <button class="settings-btn" id="settingsBtn" title="Settings">⚙</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-strip">
+      <div class="progress-cell">
+        <div class="progress-num">${stats.attempted}</div>
+        <div class="progress-lbl">Attempted</div>
+      </div>
+      <div class="progress-cell">
+        <div class="progress-num">${stats.mastered}</div>
+        <div class="progress-lbl">Band 6+</div>
+      </div>
+      <div class="progress-cell">
+        <div class="progress-num">${stats.totalQ}</div>
+        <div class="progress-lbl">Total</div>
+      </div>
+    </div>
+
+    <div class="track-progress">
+      <div class="track-header">
+        <span>Season Progress</span>
+        <span class="pct">${pct}%</span>
+      </div>
+      <div class="track-line"><div class="track-fill" style="width:${pct}%"></div></div>
+    </div>
+
+    <div class="parts">
+      <button class="part-card ${state.currentPart === 'part1' ? 'active' : ''}" data-part="part1">
+        <div class="part-num">P1</div>
+        <div class="part-name">PRACTICE</div>
+        <div class="part-meta">18 topics</div>
+      </button>
+      <button class="part-card ${state.currentPart === 'part2' ? 'active' : ''}" data-part="part2">
+        <div class="part-num">P2</div>
+        <div class="part-name">QUALI</div>
+        <div class="part-meta">25 cards</div>
+      </button>
+      <button class="part-card ${state.currentPart === 'part3' ? 'active' : ''}" data-part="part3">
+        <div class="part-num">P3</div>
+        <div class="part-name">RACE</div>
+        <div class="part-meta">via P2</div>
+      </button>
+    </div>
+
+    <div class="section">
+      <div class="section-eyebrow">${partEyebrow()}</div>
+      <div class="section-title">${partTitle()}</div>
+    </div>
+
+    <div class="topics" id="topicList"></div>
+  `;
+
+  // Wire up part buttons
+  document.querySelectorAll('.part-card').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.currentPart = btn.dataset.part;
+      renderHome();
+    });
+  });
+  document.getElementById('settingsBtn').addEventListener('click', renderSettings);
+
+  renderTopicList();
+}
+
+function partEyebrow() {
+  if (state.currentPart === 'part1') return 'PART 1 · INTERVIEW · 4–5 MIN';
+  if (state.currentPart === 'part2') return 'PART 2 · LONG TURN · 3–4 MIN';
+  return 'PART 3 · DISCUSSION · 4–5 MIN';
+}
+
+function partTitle() {
+  if (state.currentPart === 'part1') return 'Choose a topic';
+  if (state.currentPart === 'part2') return 'Pick a cue card';
+  return 'Part 3 follows your Part 2';
+}
+
+function renderTopicList() {
+  const list = document.getElementById('topicList');
+  if (!list) return;
+
+  if (state.currentPart === 'part1') {
+    list.innerHTML = QUESTIONS.part1.map(t => {
+      const s = topicStats(t.id, true);
+      return `
+        <button class="topic-card" data-topic="${t.id}">
+          <div class="topic-info">
+            <div class="topic-name">${t.name}</div>
+            <div class="topic-zh">${t.zh} · ${t.questions.length} questions</div>
+          </div>
+          <div class="topic-stats">
+            ${s.mastered ? `<span class="topic-stat"><span class="star">★</span> ${s.mastered}</span>` : ''}
+            ${s.attempts ? `<span class="topic-stat"><span class="check">✓</span> ${s.attempts}/${s.total}</span>` : ''}
+          </div>
+        </button>
+      `;
+    }).join('');
+
+    list.querySelectorAll('.topic-card').forEach(btn => {
+      btn.addEventListener('click', () => startPart1(btn.dataset.topic));
+    });
+  } else if (state.currentPart === 'part2') {
+    list.innerHTML = QUESTIONS.part2.map(t => {
+      const s = topicStats(t.id, false);
+      return `
+        <button class="topic-card" data-topic="${t.id}">
+          <div class="topic-info">
+            <div class="topic-name">${t.name}</div>
+            <div class="topic-zh">${t.cat} · ${t.zh}</div>
+          </div>
+          <div class="topic-stats">
+            ${s.mastered ? `<span class="topic-stat"><span class="star">★</span> ${s.mastered}</span>` : ''}
+            ${s.attempts ? `<span class="topic-stat"><span class="check">✓</span> ${s.attempts}/${s.total}</span>` : ''}
+          </div>
+        </button>
+      `;
+    }).join('');
+
+    list.querySelectorAll('.topic-card').forEach(btn => {
+      btn.addEventListener('click', () => startPart2(btn.dataset.topic));
+    });
+  } else {
+    // Part 3 — show as info, route through Part 2
+    list.innerHTML = `
+      <div class="q-card">
+        <div class="q-eyebrow">How Part 3 works</div>
+        <div class="q-text" style="font-size:15px;line-height:1.5;color:var(--txt-dim);font-weight:400">
+          Part 3 questions follow directly from your Part 2 topic. Pick a Part 2 card first — after the cue card, you'll move into Part 3 follow-ups.
+        </div>
+        <button class="btn btn-block" style="margin-top:14px" id="goP2">GO TO QUALIFYING (PART 2) ↗</button>
+      </div>
+    `;
+    document.getElementById('goP2').addEventListener('click', () => {
+      state.currentPart = 'part2';
+      renderHome();
+    });
+  }
+}
+
+/* ============================================================
+   PRACTICE — PART 1
+   ============================================================ */
+
+function startPart1(topicId) {
+  const topic = QUESTIONS.part1.find(t => t.id === topicId);
+  if (!topic) return;
+  state.currentTopic = topic;
+  state.currentQIdx = 0;
+  state.currentMode = 'part1';
+  renderPracticeP1();
+}
+
+function renderPracticeP1() {
+  const t = state.currentTopic;
+  const idx = state.currentQIdx;
+  const q = t.questions[idx];
+  const qKey = `${t.id}_q${idx}`;
+  state.transcript = '';
+  state.finalTranscript = '';
+
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    ${hudHtml(t.name, `Q${idx+1} / ${t.questions.length}`)}
+    <div class="practice">
+      <button class="practice-back" id="back">◂ Back to topics</button>
+
+      <div class="q-card">
+        <div class="q-eyebrow">PART 1 · QUESTION ${idx+1}</div>
+        <div class="q-text">${q}</div>
+      </div>
+
+      ${recordBlockHtml('Speak your answer', '~3 sentences. Natural and direct.')}
+
+      <div style="display:flex;gap:8px;margin-bottom:16px">
+        <button class="btn btn-ghost" id="prevQ" ${idx === 0 ? 'disabled' : ''}>◂ Previous</button>
+        <button class="btn btn-ghost" id="nextQ" ${idx >= t.questions.length-1 ? 'disabled' : ''}>Next ▸</button>
+      </div>
+
+      <div id="feedbackArea"></div>
+    </div>
+  `;
+
+  document.getElementById('back').addEventListener('click', () => { stopRecording(); renderHome(); });
+  document.getElementById('prevQ').addEventListener('click', () => { stopRecording(); state.currentQIdx--; renderPracticeP1(); });
+  document.getElementById('nextQ').addEventListener('click', () => { stopRecording(); state.currentQIdx++; renderPracticeP1(); });
+
+  wireRecording({ qKey, partType: 'part1', topic: t, question: q, idx });
+}
+
+/* ============================================================
+   PRACTICE — PART 2 + PART 3 FLOW
+   ============================================================ */
+
+function startPart2(topicId) {
+  const topic = QUESTIONS.part2.find(t => t.id === topicId);
+  if (!topic) return;
+  state.currentTopic = topic;
+  state.currentQIdx = 0;
+  state.currentMode = 'part2';
+  renderPracticeP2();
+}
+
+function renderPracticeP2() {
+  const t = state.currentTopic;
+  state.transcript = '';
+  state.finalTranscript = '';
+
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    ${hudHtml(t.name, 'PART 2 · LONG TURN')}
+    <div class="practice">
+      <button class="practice-back" id="back">◂ Back to topics</button>
+
+      <div class="q-card">
+        <div class="q-eyebrow">PART 2 · CUE CARD</div>
+        <div class="q-text">${t.prompt}</div>
+        <div class="cue-bullets">
+          <div class="cue-bullets-label">You should say:</div>
+          <ul>${t.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+        </div>
+      </div>
+
+      ${timerBlockHtml()}
+
+      ${recordBlockHtml('Speak for 2 minutes', 'Use PPF: Past · Present · Future')}
+
+      <div style="display:flex;gap:8px;margin-bottom:16px">
+        <button class="btn btn-ghost btn-block" id="goP3">SKIP TO PART 3 ▸</button>
+      </div>
+
+      <div id="feedbackArea"></div>
+    </div>
+  `;
+
+  document.getElementById('back').addEventListener('click', () => { stopRecording(); stopTimer(); renderHome(); });
+  document.getElementById('goP3').addEventListener('click', () => { stopRecording(); stopTimer(); state.currentQIdx = 0; state.currentMode = 'part3'; renderPracticeP3(); });
+
+  wireTimer();
+  wireRecording({ qKey: t.id, partType: 'part2', topic: t, question: t.prompt });
+}
+
+function renderPracticeP3() {
+  const t = state.currentTopic;
+  const idx = state.currentQIdx;
+  const p3qs = QUESTIONS.part3[t.part3id] || [];
+  const q = p3qs[idx];
+  const qKey = `${t.part3id}_q${idx}`;
+  state.transcript = '';
+  state.finalTranscript = '';
+
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    ${hudHtml(t.name, `PART 3 · ${idx+1}/${p3qs.length}`)}
+    <div class="practice">
+      <button class="practice-back" id="back">◂ Back to topics</button>
+
+      <div class="q-card">
+        <div class="q-eyebrow">PART 3 · QUESTION ${idx+1}</div>
+        <div class="q-text">${q}</div>
+      </div>
+
+      <div style="background:var(--bg-card);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:8px;padding:12px 14px;margin-bottom:16px;font-size:13px;color:var(--txt-dim)">
+        <strong style="color:var(--amber);font-family:var(--mono);font-size:11px;letter-spacing:0.15em">CRISP REMINDER</strong><br>
+        <strong style="color:var(--txt)">C</strong>omparison · <strong style="color:var(--txt)">R</strong>eason · <strong style="color:var(--txt)">I</strong>nfluence · <strong style="color:var(--txt)">S</strong>upporting Example · <strong style="color:var(--txt)">P</strong>ersonal Example<br>
+        <span style="font-size:12px">Aim for 5+ sentences. Mix 2–3 elements.</span>
+      </div>
+
+      ${recordBlockHtml('Discuss', 'Reference your Part 2 story when natural.')}
+
+      <div style="display:flex;gap:8px;margin-bottom:16px">
+        <button class="btn btn-ghost" id="prevQ" ${idx === 0 ? 'disabled' : ''}>◂ Previous</button>
+        <button class="btn btn-ghost" id="nextQ" ${idx >= p3qs.length-1 ? 'disabled' : ''}>Next ▸</button>
+      </div>
+
+      <div id="feedbackArea"></div>
+    </div>
+  `;
+
+  document.getElementById('back').addEventListener('click', () => { stopRecording(); renderHome(); });
+  document.getElementById('prevQ').addEventListener('click', () => { stopRecording(); state.currentQIdx--; renderPracticeP3(); });
+  document.getElementById('nextQ').addEventListener('click', () => { stopRecording(); state.currentQIdx++; renderPracticeP3(); });
+
+  wireRecording({ qKey, partType: 'part3', topic: t, question: q, idx });
+}
+
+/* ============================================================
+   HUD + RECORDING + TIMER HTML BUILDERS
+   ============================================================ */
+
+function hudHtml(title, meta) {
+  return `
+    <div class="hud">
+      <div class="hud-row">
+        <div class="hud-brand">
+          <div class="hud-flag"></div>
+          <div>
+            <div class="hud-title">${title.toUpperCase()}</div>
+          </div>
+        </div>
+        <div class="hud-meta">${meta}</div>
+      </div>
+    </div>
+  `;
+}
+
+function recordBlockHtml(title, sub) {
+  return `
+    <div class="record-block">
+      <div class="record-header">
+        <div>
+          <div class="record-title">${title}</div>
+          <div style="font-size:12px;color:var(--txt-mute);margin-top:2px">${sub}</div>
+        </div>
+        <div class="record-status" id="recStatus">READY</div>
+      </div>
+      <div class="transcript" id="transcript" contenteditable="false"></div>
+      <div class="record-controls">
+        <button class="btn btn-green" id="startRec">● START</button>
+        <button class="btn btn-amber" id="stopRec" disabled>■ STOP</button>
+        <button class="btn btn-ghost" id="editRec" disabled>✎ EDIT</button>
+        <button class="btn btn-block" id="submitRec" style="margin-top:8px" disabled>RUN ANALYSIS ↗</button>
+      </div>
+    </div>
+  `;
+}
+
+function timerBlockHtml() {
+  return `
+    <div class="timer-block" id="timerBlock">
+      <div class="timer-stage" id="timerStage">PIT LANE — Tap "Prep" to start</div>
+      <div class="timer-display" id="timerDisplay">--:--</div>
+      <div class="timer-progress"><div class="timer-bar" id="timerBar"></div></div>
+      <div class="timer-controls">
+        <button class="btn btn-amber" id="prepBtn">PREP 1:00</button>
+        <button class="btn btn-green" id="speakBtn">SPEAK 2:00</button>
+        <button class="btn btn-ghost" id="resetTimer">RESET</button>
+      </div>
+    </div>
+  `;
+}
+
+/* ============================================================
+   TIMER LOGIC
+   ============================================================ */
+
+function wireTimer() {
+  const prep = document.getElementById('prepBtn');
+  const speak = document.getElementById('speakBtn');
+  const reset = document.getElementById('resetTimer');
+  if (!prep) return;
+
+  prep.addEventListener('click', () => startTimer(60, 'PREP — Take notes'));
+  speak.addEventListener('click', () => startTimer(120, 'SPEAK — On lap'));
+  reset.addEventListener('click', () => stopTimer(true));
+}
+
+function startTimer(seconds, stageLabel) {
+  stopTimer();
+  state.timerEnd = Date.now() + seconds * 1000;
+  state.timerStage = stageLabel;
+  const total = seconds * 1000;
+
+  const tick = () => {
+    const remaining = Math.max(0, state.timerEnd - Date.now());
+    const sec = Math.ceil(remaining / 1000);
+    const mm = String(Math.floor(sec / 60)).padStart(2, '0');
+    const ss = String(sec % 60).padStart(2, '0');
+    const display = document.getElementById('timerDisplay');
+    const bar = document.getElementById('timerBar');
+    const stage = document.getElementById('timerStage');
+    if (!display) return;
+    display.textContent = `${mm}:${ss}`;
+    display.classList.toggle('warn', remaining < 30000 && remaining > 10000);
+    display.classList.toggle('danger', remaining <= 10000 && remaining > 0);
+    if (stage) stage.textContent = stageLabel;
+    if (bar) bar.style.width = `${100 - (remaining / total * 100)}%`;
+    if (remaining <= 0) {
+      stopTimer();
+      // Beep / vibrate
+      if (navigator.vibrate) navigator.vibrate([180, 80, 180]);
+      showToast('Time! ✓');
+    }
+  };
+  tick();
+  state.timer = setInterval(tick, 200);
+}
+
+function stopTimer(clear = false) {
+  if (state.timer) { clearInterval(state.timer); state.timer = null; }
+  if (clear) {
+    const display = document.getElementById('timerDisplay');
+    const bar = document.getElementById('timerBar');
+    const stage = document.getElementById('timerStage');
+    if (display) { display.textContent = '--:--'; display.classList.remove('warn', 'danger'); }
+    if (bar) bar.style.width = '0%';
+    if (stage) stage.textContent = 'PIT LANE — Tap "Prep" to start';
+  }
+}
+
+/* ============================================================
+   SPEECH RECOGNITION
+   ============================================================ */
+
+function wireRecording(ctx) {
+  const startBtn = document.getElementById('startRec');
+  const stopBtn = document.getElementById('stopRec');
+  const editBtn = document.getElementById('editRec');
+  const submitBtn = document.getElementById('submitRec');
+  const transcript = document.getElementById('transcript');
+
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    document.getElementById('recStatus').textContent = 'NO MIC SUPPORT';
+    startBtn.disabled = true;
+    transcript.textContent = "Your browser doesn't support speech recognition. Use Chrome or Edge on phone, or type your answer in the box (tap EDIT) and submit.";
+    editBtn.disabled = false;
+    editBtn.click();
+    return;
+  }
+
+  startBtn.addEventListener('click', () => {
+    state.recognition = new SR();
+    state.recognition.continuous = true;
+    state.recognition.interimResults = true;
+    state.recognition.lang = 'en-US';
+
+    state.recognition.onresult = (e) => {
+      let interim = '';
+      let final = state.finalTranscript;
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const txt = e.results[i][0].transcript;
+        if (e.results[i].isFinal) {
+          final += txt + ' ';
+        } else {
+          interim += txt;
+        }
+      }
+      state.finalTranscript = final;
+      state.transcript = (final + interim).trim();
+      transcript.textContent = state.transcript;
+      transcript.scrollTop = transcript.scrollHeight;
+      submitBtn.disabled = state.transcript.length < 10;
+    };
+
+    state.recognition.onerror = (e) => {
+      console.warn('Speech error:', e.error);
+      if (e.error === 'no-speech') return;
+      if (e.error === 'not-allowed') {
+        showToast('Microphone access denied');
+      }
+      stopRecording();
+    };
+
+    state.recognition.onend = () => {
+      // Auto-restart if still recording (continuous on mobile sometimes ends)
+      if (state.recording) {
+        try { state.recognition.start(); } catch {}
+      }
+    };
+
+    try {
+      state.recognition.start();
+      state.recording = true;
+      startBtn.disabled = true;
+      stopBtn.disabled = false;
+      editBtn.disabled = true;
+      const status = document.getElementById('recStatus');
+      status.textContent = 'RECORDING';
+      status.classList.add('live');
+    } catch (err) {
+      showToast('Cannot start microphone');
+    }
+  });
+
+  stopBtn.addEventListener('click', () => {
+    stopRecording();
+    editBtn.disabled = false;
+  });
+
+  editBtn.addEventListener('click', () => {
+    transcript.contentEditable = 'true';
+    transcript.classList.add('editing');
+    transcript.focus();
+    editBtn.disabled = true;
+  });
+
+  transcript.addEventListener('input', () => {
+    state.transcript = transcript.textContent.trim();
+    state.finalTranscript = state.transcript;
+    submitBtn.disabled = state.transcript.length < 10;
+  });
+
+  submitBtn.addEventListener('click', () => {
+    if (state.recording) stopRecording();
+    transcript.contentEditable = 'false';
+    transcript.classList.remove('editing');
+    submitToCoach(ctx);
+  });
+}
+
+function stopRecording() {
+  if (state.recognition) {
+    state.recording = false;
+    try { state.recognition.stop(); } catch {}
+    state.recognition = null;
+  }
+  const status = document.getElementById('recStatus');
+  if (status) {
+    status.textContent = 'STOPPED';
+    status.classList.remove('live');
+  }
+  const startBtn = document.getElementById('startRec');
+  const stopBtn = document.getElementById('stopRec');
+  if (startBtn) startBtn.disabled = false;
+  if (stopBtn) stopBtn.disabled = true;
+}
+
+/* ============================================================
+   AI COACH — DEEPSEEK API
+   ============================================================ */
+
+async function submitToCoach(ctx) {
+  const apiKey = localStorage.getItem(STORAGE_KEYS.apiKey);
+  if (!apiKey) {
+    showToast('Set your DeepSeek API key in settings first');
+    setTimeout(renderSettings, 800);
+    return;
+  }
+
+  const fbArea = document.getElementById('feedbackArea');
+  fbArea.innerHTML = `
+    <div class="feedback">
+      <div class="loading">
+        <div class="lights" id="loadLights">
+          ${[0,1,2,3,4].map(i => `<div class="light" data-i="${i}"></div>`).join('')}
+        </div>
+        <div class="loading-text" id="loadText">PIT WALL ANALYZING...</div>
+      </div>
+    </div>
+  `;
+  // Animate F1 start lights
+  let lightIdx = 0;
+  const lightInterval = setInterval(() => {
+    document.querySelectorAll('#loadLights .light').forEach((l, i) => {
+      l.classList.toggle('on', i <= lightIdx);
+    });
+    lightIdx = (lightIdx + 1) % 6;
+  }, 350);
+
+  // Build prompt
+  const sysPrompt = buildSystemPrompt(ctx);
+  const userMsg = buildUserMessage(ctx);
+
+  try {
+    const result = await callDeepSeek(apiKey, sysPrompt, userMsg);
+    clearInterval(lightInterval);
+    markAttempt(ctx.qKey);
+    if (result.overall_band >= 6) markMastered(ctx.qKey, result.overall_band);
+    renderFeedback(result, ctx);
+  } catch (err) {
+    clearInterval(lightInterval);
+    fbArea.innerHTML = `
+      <div class="feedback">
+        <div class="fb-section">
+          <div class="fb-label">⚠ ANALYSIS FAILED</div>
+          <div class="fb-content">${err.message || 'Could not connect to DeepSeek. Check your API key in settings, or try again in a moment.'}</div>
+        </div>
+        <button class="btn btn-block" onclick="document.getElementById('submitRec').click()" style="margin-top:8px">RETRY</button>
+      </div>
+    `;
+  }
+}
+
+function buildSystemPrompt(ctx) {
+  const partLabel = ctx.partType === 'part1' ? 'IELTS Speaking Part 1 (interview)' :
+                    ctx.partType === 'part2' ? 'IELTS Speaking Part 2 (long turn / cue card)' :
+                    'IELTS Speaking Part 3 (discussion)';
+  const targetBand = '6.0–6.5';
+
+  let strategyGuidance = '';
+  if (ctx.partType === 'part1') {
+    strategyGuidance = `For Part 1, the answer should be 2–4 natural sentences. Look for natural development: opinion + reason + brief example. Don't expect CRISP here.`;
+  } else if (ctx.partType === 'part2') {
+    strategyGuidance = `For Part 2 (Long Turn), the student is taught the PPF method: Past, Present, Future. Check whether her answer covers a story (Past), current thoughts (Present), and looking ahead (Future). Also check whether she addressed the cue card bullets. Aim length: ~1.5–2 minutes of speech (~200–300 words).`;
+  } else {
+    strategyGuidance = `For Part 3, the student is taught the CRISP framework:
+  C - Comparison (contrast time periods, groups, ideas)
+  R - Reason (explain WHY)
+  I - Influence (consequences, impact)
+  S - Supporting Example (real-world example)
+  P - Personal Example (own experience)
+She should aim for 5+ sentences and use 2–3 CRISP elements.`;
+  }
+
+  return `You are an experienced IELTS Speaking examiner and coach giving feedback to Tracy, a Chinese student preparing for IELTS in 2 weeks. Her current level is around Band 5.0–5.5 and her target is ${targetBand}.
+
+You are evaluating a ${partLabel} response.
+
+${strategyGuidance}
+
+Your feedback must be:
+1. Specific to HER actual words — quote her phrases.
+2. Encouraging but honest — her real level matters more than being kind.
+3. Focused on ONE specific actionable improvement (not five).
+4. For Part 3: explicitly tag which CRISP elements she used and which she missed, and SHOW HER how to add a missing element with a concrete sample sentence using HER topic.
+
+Output ONLY a single JSON object (no markdown, no code fences) with this exact structure:
+{
+  "overall_band": 6.0,
+  "scores": {
+    "fluency": 6,
+    "lexical": 6,
+    "grammar": 5,
+    "pronunciation": null
+  },
+  "strengths": "What she did well — quote her exact phrases. 1–2 sentences.",
+  "main_issue": "The ONE most impactful thing to fix. Be specific.",
+  "fix_demo": "A concrete sample sentence she could have said, using HER topic. Show her HOW.",
+  "crisp_used": ["R", "S"],
+  "crisp_missing": ["C", "I", "P"],
+  "crisp_demo": "If Part 3: pick ONE missing CRISP element and write a sample sentence using HER topic. If not Part 3, set to null.",
+  "vocab_upgrade": "A specific word/phrase she used + a Band 6.5+ alternative. Format: 'You said X — try Y'.",
+  "encouragement": "One genuine, specific motivational sentence."
+}
+
+Use band scores as integers or .5 increments. Pronunciation is null since you can't hear her — only score what's evident from text. Keep all fields concise — this displays on a phone.`;
+}
+
+function buildUserMessage(ctx) {
+  let prompt = `Question: ${ctx.question}\n\n`;
+  if (ctx.partType === 'part2') {
+    prompt += `Cue card bullets:\n${ctx.topic.bullets.map(b => '- ' + b).join('\n')}\n\n`;
+  }
+  prompt += `Tracy's answer:\n"${state.transcript}"\n\nGive feedback as JSON.`;
+  return prompt;
+}
+
+async function callDeepSeek(apiKey, systemPrompt, userMessage) {
+  const resp = await fetch('https://api.deepseek.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'deepseek-chat',
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userMessage },
+      ],
+      temperature: 0.4,
+      response_format: { type: 'json_object' },
+    }),
+  });
+
+  if (!resp.ok) {
+    let errMsg = `API error ${resp.status}`;
+    try {
+      const j = await resp.json();
+      errMsg = j.error?.message || errMsg;
+    } catch {}
+    throw new Error(errMsg);
+  }
+
+  const data = await resp.json();
+  const content = data.choices?.[0]?.message?.content;
+  if (!content) throw new Error('Empty response from DeepSeek');
+
+  // Strip code fences if present
+  const cleaned = content.replace(/```json|```/g, '').trim();
+  try {
+    return JSON.parse(cleaned);
+  } catch (e) {
+    throw new Error('Could not parse coach response. Try again.');
+  }
+}
+
+/* ============================================================
+   FEEDBACK RENDER
+   ============================================================ */
+
+function renderFeedback(r, ctx) {
+  const fbArea = document.getElementById('feedbackArea');
+  const band = r.overall_band || '—';
+  const scores = r.scores || {};
+
+  const crispBlock = (ctx.partType === 'part3') ? `
+    <div class="fb-section">
+      <div class="fb-label"><span class="num">2</span>CRISP CHECK</div>
+      <div class="crisp-tags">
+        ${['C','R','I','S','P'].map(letter => {
+          const used = (r.crisp_used || []).includes(letter);
+          const names = { C: 'Comparison', R: 'Reason', I: 'Influence', S: 'Support', P: 'Personal' };
+          return `<span class="crisp-tag ${used ? 'used' : 'missing'}">${used ? '✓' : '○'} ${letter} · ${names[letter]}</span>`;
+        }).join('')}
+      </div>
+      ${r.crisp_demo ? `<div class="fb-quote" style="margin-top:10px"><strong style="color:var(--amber);font-family:var(--mono);font-size:11px;letter-spacing:0.15em">TRY ADDING:</strong><br>${escapeHtml(r.crisp_demo)}</div>` : ''}
+    </div>
+  ` : '';
+
+  const ppfBlock = (ctx.partType === 'part2') ? `
+    <div class="fb-section">
+      <div class="fb-label"><span class="num">2</span>PPF CHECK</div>
+      <div class="fb-content">${escapeHtml(r.main_issue || '')}</div>
+    </div>
+  ` : '';
+
+  fbArea.innerHTML = `
+    <div class="feedback">
+      <div class="feedback-header">
+        <div class="feedback-title">PIT WALL DEBRIEF</div>
+        <div class="band-badge">
+          <div class="band-label">BAND</div>
+          <div class="band-value">${band}</div>
+        </div>
+      </div>
+
+      <div class="fb-section">
+        <div class="score-grid">
+          ${scoreItem('Fluency', scores.fluency)}
+          ${scoreItem('Lexical', scores.lexical)}
+          ${scoreItem('Grammar', scores.grammar)}
+          ${scoreItem('Pronun.', scores.pronunciation)}
+        </div>
+      </div>
+
+      <div class="fb-section">
+        <div class="fb-label"><span class="num">1</span>STRENGTHS</div>
+        <div class="fb-content">${escapeHtml(r.strengths || '')}</div>
+      </div>
+
+      ${crispBlock}
+      ${ctx.partType !== 'part3' ? `
+        <div class="fb-section">
+          <div class="fb-label"><span class="num">2</span>MAIN FIX</div>
+          <div class="fb-content">${escapeHtml(r.main_issue || '')}</div>
+          ${r.fix_demo ? `<div class="fb-quote"><strong style="color:var(--amber);font-family:var(--mono);font-size:11px;letter-spacing:0.15em">TRY:</strong><br>${escapeHtml(r.fix_demo)}</div>` : ''}
+        </div>
+      ` : `
+        <div class="fb-section">
+          <div class="fb-label"><span class="num">3</span>MAIN FIX</div>
+          <div class="fb-content">${escapeHtml(r.main_issue || '')}</div>
+          ${r.fix_demo ? `<div class="fb-quote"><strong style="color:var(--amber);font-family:var(--mono);font-size:11px;letter-spacing:0.15em">TRY:</strong><br>${escapeHtml(r.fix_demo)}</div>` : ''}
+        </div>
+      `}
+
+      ${r.vocab_upgrade ? `
+        <div class="fb-section">
+          <div class="fb-label"><span class="num">${ctx.partType === 'part3' ? '4' : '3'}</span>VOCAB UPGRADE</div>
+          <div class="fb-content">${escapeHtml(r.vocab_upgrade)}</div>
+        </div>
+      ` : ''}
+
+      ${r.encouragement ? `
+        <div class="fb-section" style="border-top:1px solid var(--line);padding-top:12px;margin-top:14px">
+          <div class="fb-content" style="font-style:italic;color:var(--green)">▸ ${escapeHtml(r.encouragement)}</div>
+        </div>
+      ` : ''}
+
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-icon" id="showModel">PEEK AT MODEL</button>
+        <button class="btn btn-icon" id="tryAgain" style="flex:1">RETRY THIS Q</button>
+      </div>
+      <div id="modelArea" style="margin-top:12px"></div>
+    </div>
+  `;
+
+  document.getElementById('tryAgain').addEventListener('click', () => {
+    if (state.currentMode === 'part1') renderPracticeP1();
+    else if (state.currentMode === 'part2') renderPracticeP2();
+    else renderPracticeP3();
+  });
+
+  document.getElementById('showModel').addEventListener('click', async () => {
+    const area = document.getElementById('modelArea');
+    if (area.innerHTML) { area.innerHTML = ''; return; }
+    area.innerHTML = `<div class="loading"><div class="loading-text">Building model answer...</div></div>`;
+    try {
+      const apiKey = localStorage.getItem(STORAGE_KEYS.apiKey);
+      const modelText = await getModelAnswer(apiKey, ctx);
+      area.innerHTML = `
+        <div style="background:var(--bg-base);border:1px solid var(--line);border-left:3px solid var(--green);border-radius:6px;padding:14px">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--green);letter-spacing:0.2em;margin-bottom:8px">MODEL ANSWER · BAND 6.5</div>
+          <div style="font-family:Georgia,serif;font-size:14.5px;line-height:1.55;color:var(--txt)">${modelText}</div>
+        </div>
+      `;
+    } catch (e) {
+      area.innerHTML = `<div style="color:var(--red);font-size:13px">Could not load model — ${e.message}</div>`;
+    }
+  });
+}
+
+async function getModelAnswer(apiKey, ctx) {
+  const partLabel = ctx.partType === 'part1' ? 'Part 1' : ctx.partType === 'part2' ? 'Part 2 (cue card)' : 'Part 3';
+  const guidance = ctx.partType === 'part1' ? 'Write 2–4 sentences. Natural and direct. No filler.'
+    : ctx.partType === 'part2' ? 'Write a 200–250 word answer using the PPF method (clear past story, present thoughts, brief future). Natural rhythm, not formulaic. Use the cue card bullets.'
+    : 'Write a 5–6 sentence answer for Tracy at Band 6.5 level. Use 3 CRISP elements. Tag them inline like (C), (R), (I), (S), (P) at the end of each sentence that uses one.';
+
+  const sys = `You are writing a sample IELTS Speaking ${partLabel} answer for a Chinese student aiming for Band 6.5. ${guidance} Use natural conversational English — not academic. Write only the answer text, no preamble. Wrap CRISP tags in [brackets] for Part 3. Keep paragraph form (no bullet points).`;
+  const usr = `Question: ${ctx.question}\n${ctx.partType === 'part2' ? 'Cue card bullets:\n' + ctx.topic.bullets.map(b => '- ' + b).join('\n') : ''}\n\nWrite the model answer.`;
+
+  const resp = await fetch('https://api.deepseek.com/v1/chat/completions', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'deepseek-chat',
+      messages: [{ role: 'system', content: sys }, { role: 'user', content: usr }],
+      temperature: 0.6,
+    }),
+  });
+  if (!resp.ok) throw new Error('API error');
+  const data = await resp.json();
+  let text = data.choices?.[0]?.message?.content || '';
+  // Bold CRISP tags
+  text = escapeHtml(text).replace(/\[([CRISP])\]/g, '<strong style="color:var(--amber);font-family:var(--mono);font-size:12px">[$1]</strong>');
+  return text.replace(/\n/g, '<br>');
+}
+
+function scoreItem(name, val) {
+  if (val === null || val === undefined) {
+    return `<div class="score-item"><div class="score-name">${name}</div><div class="score-val" style="color:var(--txt-mute)">—</div></div>`;
+  }
+  const cls = val >= 7 ? 's7' : val >= 6 ? 's6' : 's5';
+  return `<div class="score-item"><div class="score-name">${name}</div><div class="score-val ${cls}">${val}</div></div>`;
+}
+
+function escapeHtml(s) {
+  if (!s) return '';
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+/* ============================================================
+   SETTINGS MODAL
+   ============================================================ */
+
+function renderSettings() {
+  const existing = localStorage.getItem(STORAGE_KEYS.apiKey) || '';
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.innerHTML = `
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-title">SETTINGS</div>
+      <div class="modal-sub">Configure your AI coach</div>
+
+      <div class="modal-row">
+        <label class="field-label">DEEPSEEK API KEY</label>
+        <input type="password" id="apiKeyInput" class="field-input" value="${existing}" placeholder="sk-...">
+        <div class="modal-help">
+          Get a key from <a href="https://platform.deepseek.com/api_keys" target="_blank">platform.deepseek.com</a>. Stored only on this device. Never shared.
+        </div>
+      </div>
+
+      <div class="modal-row">
+        <label class="field-label">PROGRESS</label>
+        <div style="font-size:13px;color:var(--txt-dim);margin-bottom:8px">
+          ${overallStats().attempted} questions attempted · ${overallStats().mastered} at Band 6+
+        </div>
+        <button class="btn btn-ghost btn-icon" id="resetProgress">RESET PROGRESS</button>
+      </div>
+
+      <div class="modal-row">
+        <label class="field-label">SESSION</label>
+        <button class="btn btn-ghost btn-icon" id="logoutBtn">LOG OUT</button>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="cancelSettings">CANCEL</button>
+        <button class="btn" id="saveSettings">SAVE</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const close = () => modal.remove();
+  modal.addEventListener('click', close);
+
+  document.getElementById('cancelSettings').addEventListener('click', close);
+
+  document.getElementById('saveSettings').addEventListener('click', () => {
+    const k = document.getElementById('apiKeyInput').value.trim();
+    if (k) localStorage.setItem(STORAGE_KEYS.apiKey, k);
+    close();
+    showToast('Settings saved');
+  });
+
+  document.getElementById('resetProgress').addEventListener('click', () => {
+    if (confirm('Reset all progress? This cannot be undone.')) {
+      progress.attempts = {};
+      progress.mastered = {};
+      saveProgress();
+      close();
+      renderHome();
+      showToast('Progress reset');
+    }
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem(STORAGE_KEYS.auth);
+    state.authed = false;
+    close();
+    renderGate();
+  });
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => {
+    t.style.opacity = '0';
+    setTimeout(() => t.remove(), 300);
+  }, 2200);
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+
+if (isAuthValid()) {
+  state.authed = true;
+  renderHome();
+} else {
+  renderGate();
+}
+
+// Prevent accidental zoom on iOS
+document.addEventListener('gesturestart', e => e.preventDefault());
+</script>
+
+</body>
+</html>
