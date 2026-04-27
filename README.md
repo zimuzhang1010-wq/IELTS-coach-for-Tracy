@@ -31,4 +31,4 @@ This project turns personal teaching experience into a scalable AI-powered produ
 
 ## Tech
 - HTML / JavaScript (basic prototype)
-- AI-assisted generation (Claude)
+- AI-assisted generation 
